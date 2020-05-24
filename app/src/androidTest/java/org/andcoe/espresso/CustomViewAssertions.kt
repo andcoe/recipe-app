@@ -8,11 +8,13 @@ import org.hamcrest.CoreMatchers.allOf
 
 object CustomViewAssertions {
 
-    fun checkTitleIsDisplayed(@StringRes titleResId: Int) {
+    fun checkTitleIsDisplayed(@StringRes titleResId: Int, param: String = "") {
         val resources = appContext().resources
+        val titleText = resources.getString(titleResId, if (param.isNotEmpty()) param else emptyArray<String>())
+
         onView(
             allOf(
-                withText(resources.getString(titleResId)),
+                withText(titleText),
                 isDescendantOfA(withResourceName("action_bar"))
             )
         ).check(matches(isDisplayed()))

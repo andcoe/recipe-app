@@ -22,9 +22,8 @@ class CategoryRecipesActivityTest {
     fun lunchesCategoryList() {
         val intent = CategoryRecipesActivity.createStartIntent(appContext(), CategoryItem("Pasta"))
         activityRule.launchActivity(intent)
-        categoryRecipesRobot.checkTitleIsDisplayed()
-        categoryRecipesRobot.checkCategoryNameIsDisplayed("Pasta")
-        categoryRecipesRobot.checkListContains(RecipeItem("Tomato and pesto spaghetti"))
+        categoryRecipesRobot.checkTitleIsDisplayed("Pasta")
+        categoryRecipesRobot.checkListContains(RecipeItem("Tomato and pesto spaghetti", "some url"))
     }
 
 }

@@ -10,14 +10,8 @@ import org.andcoe.recipeapp.categoryrecipes.model.RecipeItem
 
 class CategoryRecipesRobot {
 
-    fun checkTitleIsDisplayed() {
-        CustomViewAssertions.checkTitleIsDisplayed(R.string.category_recipes_title)
-    }
-
-    fun checkCategoryNameIsDisplayed(categoryName: String) {
-        onView(withId(R.id.categoryName))
-            .check(matches(withText(categoryName)))
-            .check(matches(isDisplayed()))
+    fun checkTitleIsDisplayed(categoryName: String) {
+        CustomViewAssertions.checkTitleIsDisplayed(R.string.category_recipes_title, categoryName)
     }
 
     fun checkListContains(recipeItem: RecipeItem) {
