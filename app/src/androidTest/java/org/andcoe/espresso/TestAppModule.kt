@@ -1,4 +1,4 @@
-package org.andcoe.recipeapp.espresso
+package org.andcoe.espresso
 
 import io.reactivex.Single
 import org.andcoe.recipeapp.categories.repository.CategoryRepository

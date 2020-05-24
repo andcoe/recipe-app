@@ -1,4 +1,4 @@
-package org.andcoe.recipeapp.espresso.robots
+package org.andcoe.robots
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView

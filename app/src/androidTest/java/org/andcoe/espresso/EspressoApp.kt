@@ -1,8 +1,8 @@
-package org.andcoe.recipeapp.espresso
+package org.andcoe.espresso
 
 import org.andcoe.recipeapp.core.App
 
-class EspressoApplication : App() {
+class EspressoApp : App() {
 
     override fun onCreate() {
         super.onCreate()

@@ -13,7 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "org.andcoe.recipeapp.espresso.TestRunner"
+        testInstrumentationRunner "org.andcoe.espresso.TestRunner"
     }
 
     buildTypes {
