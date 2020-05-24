@@ -23,9 +23,14 @@ class CategoryRecipesActivity : AppCompatActivity() {
         const val categoryKey = "category_key"
 
         fun start(context: Context, categoryItem: CategoryItem) {
+            val intent = createStartIntent(context, categoryItem)
+            context.startActivity(intent)
+        }
+
+        fun createStartIntent(context: Context, categoryItem: CategoryItem): Intent {
             val intent = Intent(context, CategoryRecipesActivity::class.java)
             intent.putExtra(categoryKey, categoryItem.title)
-            context.startActivity(intent)
+            return intent
         }
     }
 }

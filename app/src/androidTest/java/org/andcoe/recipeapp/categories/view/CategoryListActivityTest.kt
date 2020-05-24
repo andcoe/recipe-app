@@ -1,8 +1,7 @@
-package org.andcoe.recipeapp.categories
+package org.andcoe.recipeapp.categories.view
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import org.andcoe.recipeapp.categories.view.CategoryListActivity
 import org.andcoe.robots.CategoryListRobot
 import org.junit.Rule
 import org.junit.Test
