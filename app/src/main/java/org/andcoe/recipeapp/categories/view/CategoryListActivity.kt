@@ -33,7 +33,6 @@ class CategoryListActivity : AppCompatActivity() {
         }
         categoryList.apply {
             setHasFixedSize(true)
-            addItemDecoration(DividerItemDecoration(this@CategoryListActivity, LinearLayout.VERTICAL))
             layoutManager = LinearLayoutManager(this@CategoryListActivity)
             adapter = listAdapter
         }

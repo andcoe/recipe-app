@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">recipe-app</string>
     <string name="category_list_title">Category List</string>
-    <string name="category_recipes_title">Category Recipes</string>
+    <string name="category_recipes_title">%1$s Recipes</string>
 </resources>

@@ -19,6 +19,6 @@ class CategoryRecipesViewModel(private val repository: RecipeRepository) : ViewM
         )
 
     private fun toUiDataModel(it: CategoryRecipesResponse) =
-        it.meals.map { m -> RecipeItem(m.strMeal) }
+        it.meals.map { m -> RecipeItem(name = m.strMeal, imageUrl = m.strMealThumb) }
 
 }

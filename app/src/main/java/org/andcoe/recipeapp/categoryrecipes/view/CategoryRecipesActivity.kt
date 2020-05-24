@@ -25,17 +25,12 @@ class CategoryRecipesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_recipes)
         setTitle()
-        setCategoryName()
         setRecyclerView()
         registerObservers()
     }
 
     private fun setTitle() {
-        supportActionBar?.title = getString(R.string.category_recipes_title)
-    }
-
-    private fun setCategoryName() {
-        categoryName.text = categoryName()
+        supportActionBar?.title =  getString(R.string.category_recipes_title, categoryName())
     }
 
     private fun setRecyclerView() {
@@ -44,7 +39,6 @@ class CategoryRecipesActivity : AppCompatActivity() {
         }
         categoryRecipesList.apply {
             setHasFixedSize(true)
-            addItemDecoration(DividerItemDecoration(this@CategoryRecipesActivity, LinearLayout.VERTICAL))
             layoutManager = LinearLayoutManager(this@CategoryRecipesActivity)
             adapter = listAdapter
         }
