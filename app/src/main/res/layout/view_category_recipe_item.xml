@@ -10,39 +10,33 @@
     android:elevation="3dp"
     card_view:cardCornerRadius="2dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/touch_selector">
 
-        <FrameLayout
-            android:id="@+id/recipeLogoContainer"
+        <ImageView
+            android:id="@+id/recipeLogo"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:importantForAccessibility="no"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/recipeLogo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:importantForAccessibility="no"
-                tools:srcCompat="@drawable/ic_launcher_background" />
-        </FrameLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/recipeName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/recipeLogoContainer"
+            app:layout_constraintStart_toEndOf="@+id/recipeLogo"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Pasta" />
+            tools:text="Pasta adas dasdas dasdasd asdasdas as asd asd aasd asdasd" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
