@@ -1,25 +1,37 @@
 package org.andcoe.espresso
 
 import io.reactivex.Single
-import org.andcoe.recipeapp.categories.repository.CategoryRepository
-import org.andcoe.recipeapp.categories.repository.network.CategoryListResponse
-import org.andcoe.recipeapp.categories.repository.network.RecipeCategory
-import org.andcoe.recipeapp.categories.repository.network.TheMealDbApiClient
-import org.andcoe.recipeapp.categories.repository.storage.CategoryListLocalStore
+import org.andcoe.recipeapp.repository.RecipeRepository
+import org.andcoe.recipeapp.repository.store.RecipeStore
 import org.andcoe.recipeapp.core.AppModule
+import org.andcoe.recipeapp.repository.api.*
 
 class TestAppModule : AppModule() {
 
-    override val categoryListLocalStore: CategoryListLocalStore = CategoryListLocalStore()
+    override val recipeStore: RecipeStore =
+        RecipeStore()
 
     override val theMealDbApiClient: TheMealDbApiClient = object : TheMealDbApiClient {
-        override fun getListCategories(): Single<CategoryListResponse> {
-            return Single.just(CategoryListResponse(listOf(RecipeCategory("Pasta"))))
-        }
+        override fun getListCategories(): Single<CategoryListResponse> =
+            Single.just(CategoryListResponse(listOf(Category("Pasta"))))
+
+        override fun getCategoryRecipes(category: String): Single<CategoryRecipesResponse> =
+            Single.just(
+                CategoryRecipesResponse(
+                    listOf(
+                        Recipe(
+                            idMeal = "1",
+                            strMeal = "Tomato and pesto spaghetti",
+                            strMealThumb = "some url"
+                        )
+                    )
+                )
+            )
     }
 
-    override val categoryRepository = CategoryRepository(
-        categoryListLocalStore = categoryListLocalStore,
-        theMealDbApiClient = theMealDbApiClient
-    )
+    override val recipeRepository =
+        RecipeRepository(
+            store = recipeStore,
+            apiClient = theMealDbApiClient
+        )
 }

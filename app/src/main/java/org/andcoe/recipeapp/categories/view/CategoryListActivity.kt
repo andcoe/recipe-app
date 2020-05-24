@@ -13,7 +13,7 @@ import org.andcoe.recipeapp.core.appModule
 
 class CategoryListActivity : AppCompatActivity() {
 
-    private lateinit var categoryListAdapter: CategoryListAdapter
+    private lateinit var listAdapter: CategoryListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +28,14 @@ class CategoryListActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerView() {
-        categoryListAdapter = CategoryListAdapter {
+        listAdapter = CategoryListAdapter {
             CategoryRecipesActivity.start(this, it)
         }
         categoryList.apply {
             setHasFixedSize(true)
             addItemDecoration(DividerItemDecoration(this@CategoryListActivity, LinearLayout.VERTICAL))
             layoutManager = LinearLayoutManager(this@CategoryListActivity)
-            adapter = categoryListAdapter
+            adapter = listAdapter
         }
     }
 
@@ -43,6 +43,6 @@ class CategoryListActivity : AppCompatActivity() {
         appModule()
             .categoryListViewModel(this)
             .categoryList()
-            .observe(this, Observer { categoryListAdapter.setCategories(it) })
+            .observe(this, Observer { listAdapter.setCategories(it) })
     }
 }

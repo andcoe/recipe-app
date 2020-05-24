@@ -2,9 +2,9 @@ package org.andcoe.recipeapp.core
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.andcoe.recipeapp.categories.repository.CategoryRepository
-import org.andcoe.recipeapp.categories.repository.network.TheMealDbApiClient
-import org.andcoe.recipeapp.categories.repository.storage.CategoryListLocalStore
+import org.andcoe.recipeapp.repository.RecipeRepository
+import org.andcoe.recipeapp.repository.api.TheMealDbApiClient
+import org.andcoe.recipeapp.repository.store.RecipeStore
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -30,10 +30,12 @@ class ProdAppModule : AppModule() {
         .build()
         .create(TheMealDbApiClient::class.java)
 
-    override val categoryListLocalStore = CategoryListLocalStore()
+    override val recipeStore =
+        RecipeStore()
 
-    override val categoryRepository = CategoryRepository(
-        categoryListLocalStore = categoryListLocalStore,
-        theMealDbApiClient = theMealDbApiClient
-    )
+    override val recipeRepository =
+        RecipeRepository(
+            store = recipeStore,
+            apiClient = theMealDbApiClient
+        )
 }

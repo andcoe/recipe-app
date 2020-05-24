@@ -4,16 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel
 import io.reactivex.schedulers.Schedulers
-import org.andcoe.recipeapp.categories.repository.CategoryRepository
-import org.andcoe.recipeapp.categories.repository.network.CategoryListResponse
-import org.andcoe.recipeapp.categories.view.CategoryItem
+import org.andcoe.recipeapp.repository.RecipeRepository
+import org.andcoe.recipeapp.repository.api.CategoryListResponse
 
-class CategoryListViewModel(private val repository: CategoryRepository) : ViewModel() {
+class CategoryListViewModel(private val repository: RecipeRepository) : ViewModel() {
 
     fun categoryList(): LiveData<List<CategoryItem>> =
         LiveDataReactiveStreams.fromPublisher(
             repository
-                .getListCategories()
+                .getCategories()
                 .map { toUiDataModel(it) }
                 .subscribeOn(Schedulers.io())
                 .toFlowable()

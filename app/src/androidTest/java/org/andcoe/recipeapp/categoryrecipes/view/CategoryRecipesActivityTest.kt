@@ -3,7 +3,8 @@ package org.andcoe.recipeapp.categoryrecipes.view
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import org.andcoe.espresso.appContext
-import org.andcoe.recipeapp.categories.view.CategoryItem
+import org.andcoe.recipeapp.categories.model.CategoryItem
+import org.andcoe.recipeapp.categoryrecipes.model.RecipeItem
 import org.andcoe.robots.CategoryRecipesRobot
 import org.junit.Rule
 import org.junit.Test
@@ -23,6 +24,7 @@ class CategoryRecipesActivityTest {
         activityRule.launchActivity(intent)
         categoryRecipesRobot.checkTitleIsDisplayed()
         categoryRecipesRobot.checkCategoryNameIsDisplayed("Pasta")
+        categoryRecipesRobot.checkListContains(RecipeItem("Tomato and pesto spaghetti"))
     }
 
 }
