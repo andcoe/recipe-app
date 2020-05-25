@@ -7,11 +7,13 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.andcoe.recipeapp.categories.model.CategoryListViewModel
 import org.andcoe.recipeapp.categories.model.CategoryViewModelFactory
+import org.andcoe.recipeapp.categoryrecipes.model.CategoryRecipesViewModel
+import org.andcoe.recipeapp.categoryrecipes.model.CategoryRecipesViewModelFactory
+import org.andcoe.recipeapp.recipe.model.RecipeViewModel
+import org.andcoe.recipeapp.recipe.model.RecipeViewModelFactory
 import org.andcoe.recipeapp.repository.RecipeRepository
 import org.andcoe.recipeapp.repository.api.TheMealDbApiClient
 import org.andcoe.recipeapp.repository.store.RecipeStore
-import org.andcoe.recipeapp.categoryrecipes.model.CategoryRecipesViewModel
-import org.andcoe.recipeapp.categoryrecipes.model.CategoryRecipesViewModelFactory
 
 abstract class AppModule {
 
@@ -29,4 +31,8 @@ abstract class AppModule {
     fun categoryRecipesViewModel(owner: ViewModelStoreOwner): CategoryRecipesViewModel =
         ViewModelProvider(owner, CategoryRecipesViewModelFactory(recipeRepository))
             .get(CategoryRecipesViewModel::class.java)
+
+    fun recipeViewModel(owner: ViewModelStoreOwner): RecipeViewModel =
+        ViewModelProvider(owner, RecipeViewModelFactory(recipeRepository))
+            .get(RecipeViewModel::class.java)
 }

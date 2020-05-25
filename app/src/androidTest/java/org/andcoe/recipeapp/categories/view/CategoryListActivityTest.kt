@@ -16,9 +16,16 @@ class CategoryListActivityTest {
     private val categoryListRobot = CategoryListRobot()
 
     @Test
-    fun lunchesCategoryList() {
+    fun launchesCategoryList() {
         categoryListRobot.checkTitleIsDisplayed()
         categoryListRobot.checkListIsDisplayed()
+    }
+
+    @Test
+    fun navigatesToNextView() {
+        categoryListRobot.checkListIsDisplayed()
+        categoryListRobot.clickItemAtPosition(0)
+        categoryListRobot.checkListIsNotDisplayed()
     }
 
 }

@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import org.andcoe.espresso.appContext
 import org.andcoe.recipeapp.categories.model.CategoryItem
-import org.andcoe.recipeapp.categoryrecipes.model.RecipeItem
+import org.andcoe.recipeapp.categoryrecipes.model.CategoryRecipeItem
 import org.andcoe.robots.CategoryRecipesRobot
 import org.junit.Rule
 import org.junit.Test
@@ -23,7 +23,7 @@ class CategoryRecipesActivityTest {
         val intent = CategoryRecipesActivity.createStartIntent(appContext(), CategoryItem("Pasta"))
         activityRule.launchActivity(intent)
         categoryRecipesRobot.checkTitleIsDisplayed("Pasta")
-        categoryRecipesRobot.checkListContains(RecipeItem("Tomato and pesto spaghetti", "some url"))
+        categoryRecipesRobot.checkListContains(CategoryRecipeItem("1", "Tomato and pesto spaghetti", "some url"))
     }
 
 }

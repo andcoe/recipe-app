@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.andcoe.recipeapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".core.App"
@@ -22,6 +22,7 @@
         </activity>
 
         <activity android:name=".categoryrecipes.view.CategoryRecipesActivity" />
+        <activity android:name=".recipe.view.RecipeActivity" />
 
     </application>
 

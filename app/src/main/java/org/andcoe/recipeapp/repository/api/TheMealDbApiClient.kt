@@ -12,4 +12,7 @@ interface TheMealDbApiClient {
     @GET("filter.php")
     fun getCategoryRecipes(@Query("c") category: String): Single<CategoryRecipesResponse>
 
+    @GET("lookup.php")
+    fun getRecipe(@Query("i") id: String): Single<RecipeResponse>
+
 }

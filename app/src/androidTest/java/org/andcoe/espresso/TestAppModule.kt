@@ -1,10 +1,10 @@
 package org.andcoe.espresso
 
 import io.reactivex.Single
-import org.andcoe.recipeapp.repository.RecipeRepository
-import org.andcoe.recipeapp.repository.store.RecipeStore
 import org.andcoe.recipeapp.core.AppModule
+import org.andcoe.recipeapp.repository.RecipeRepository
 import org.andcoe.recipeapp.repository.api.*
+import org.andcoe.recipeapp.repository.store.RecipeStore
 
 class TestAppModule : AppModule() {
 
@@ -23,6 +23,18 @@ class TestAppModule : AppModule() {
                             idMeal = "1",
                             strMeal = "Tomato and pesto spaghetti",
                             strMealThumb = "some url"
+                        )
+                    )
+                )
+            )
+
+        override fun getRecipe(id: String): Single<RecipeResponse> =
+            Single.just(
+                RecipeResponse(
+                    listOf(
+                        RecipeDetail(
+                            strMeal = "Tomato and pesto spaghetti",
+                            strInstructions = "some cooking instructions"
                         )
                     )
                 )

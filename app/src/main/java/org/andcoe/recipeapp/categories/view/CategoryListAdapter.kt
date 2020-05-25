@@ -9,8 +9,8 @@ import kotlinx.android.synthetic.main.view_category_item.view.*
 import org.andcoe.recipeapp.R
 import org.andcoe.recipeapp.categories.model.CategoryItem
 
-class CategoryListAdapter(private val categorySelectedListener: (CategoryItem) -> Unit)
-    : RecyclerView.Adapter<CategoryListAdapter.CategoryViewHolder>() {
+class CategoryListAdapter(private val categorySelectedListener: (CategoryItem) -> Unit) :
+    RecyclerView.Adapter<CategoryListAdapter.CategoryViewHolder>() {
 
     private var items: List<CategoryItem> = mutableListOf()
 

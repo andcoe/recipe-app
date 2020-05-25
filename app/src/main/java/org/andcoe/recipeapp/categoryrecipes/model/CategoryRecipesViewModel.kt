@@ -9,7 +9,7 @@ import org.andcoe.recipeapp.repository.api.CategoryRecipesResponse
 
 class CategoryRecipesViewModel(private val repository: RecipeRepository) : ViewModel() {
 
-    fun categoryRecipes(category: String): LiveData<List<RecipeItem>> =
+    fun categoryRecipes(category: String): LiveData<List<CategoryRecipeItem>> =
         LiveDataReactiveStreams.fromPublisher(
             repository
                 .getCategoryRecipes(category)
@@ -19,6 +19,12 @@ class CategoryRecipesViewModel(private val repository: RecipeRepository) : ViewM
         )
 
     private fun toUiDataModel(it: CategoryRecipesResponse) =
-        it.meals.map { m -> RecipeItem(name = m.strMeal, imageUrl = m.strMealThumb) }
+        it.meals.map { m ->
+            CategoryRecipeItem(
+                id = m.idMeal,
+                name = m.strMeal,
+                imageUrl = m.strMealThumb
+            )
+        }
 
 }

@@ -7,16 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.view_category_item.view.*
 import kotlinx.android.synthetic.main.view_category_recipe_item.view.*
 import org.andcoe.recipeapp.R
-import org.andcoe.recipeapp.categories.view.CategoryListAdapter
-import org.andcoe.recipeapp.categoryrecipes.model.RecipeItem
+import org.andcoe.recipeapp.categoryrecipes.model.CategoryRecipeItem
 
-class CategoryRecipesAdapter(private val itemSelectedListener: (RecipeItem) -> Unit)
-    : RecyclerView.Adapter<CategoryRecipesAdapter.CategoryRecipeViewHolder>() {
+class CategoryRecipesAdapter(private val itemSelectedListener: (CategoryRecipeItem) -> Unit) :
+    RecyclerView.Adapter<CategoryRecipesAdapter.CategoryRecipeViewHolder>() {
 
-    private var items: List<RecipeItem> = mutableListOf()
+    private var items: List<CategoryRecipeItem> = mutableListOf()
 
     override fun getItemCount(): Int = items.size
 
@@ -40,7 +38,7 @@ class CategoryRecipesAdapter(private val itemSelectedListener: (RecipeItem) -> U
             .into(holder.recipeLogo)
     }
 
-    fun setRecipes(items: List<RecipeItem>) {
+    fun setRecipes(items: List<CategoryRecipeItem>) {
         this.items = items
         notifyDataSetChanged()
     }

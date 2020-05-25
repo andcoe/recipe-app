@@ -4,19 +4,22 @@ import io.reactivex.Maybe
 import io.reactivex.Single
 import org.andcoe.recipeapp.repository.api.CategoryListResponse
 import org.andcoe.recipeapp.repository.api.CategoryRecipesResponse
+import org.andcoe.recipeapp.repository.api.RecipeResponse
 import org.andcoe.recipeapp.repository.api.TheMealDbApiClient
 import org.andcoe.recipeapp.repository.store.RecipeStore
 import timber.log.Timber
 
-class RecipeRepository(private val store: RecipeStore,
-                       private val apiClient: TheMealDbApiClient) {
+class RecipeRepository(
+    private val store: RecipeStore,
+    private val apiClient: TheMealDbApiClient
+) {
 
     fun getCategories(): Single<CategoryListResponse> =
         categoriesFromLocalStore()
             .switchIfEmpty(
                 categoriesFromApi()
                     .map {
-                        store.store(it)
+                        store.storeCategoryRecipes(it)
                         it
                     }
             )
@@ -36,7 +39,7 @@ class RecipeRepository(private val store: RecipeStore,
             .switchIfEmpty(
                 categoryRecipesFromApi(category)
                     .map {
-                        store.store(category, it)
+                        store.storeCategoryRecipes(category, it)
                         it
                     }
             )
@@ -51,4 +54,23 @@ class RecipeRepository(private val store: RecipeStore,
         return store.getCategoryRecipes(category)
     }
 
+    fun getRecipe(id: String): Single<RecipeResponse> =
+        recipeFromLocalStore(id)
+            .switchIfEmpty(
+                recipeFromApi(id)
+                    .map {
+                        store.storeRecipe(id, it)
+                        it
+                    }
+            )
+
+    private fun recipeFromApi(id: String): Single<RecipeResponse> {
+        Timber.d("recipeFromApi")
+        return apiClient.getRecipe(id)
+    }
+
+    private fun recipeFromLocalStore(id: String): Maybe<RecipeResponse> {
+        Timber.d("recipeFromLocalStore")
+        return store.getRecipe(id)
+    }
 }

@@ -3,6 +3,7 @@ package org.andcoe.recipeapp.repository.store
 import io.reactivex.Maybe
 import org.andcoe.recipeapp.repository.api.CategoryListResponse
 import org.andcoe.recipeapp.repository.api.CategoryRecipesResponse
+import org.andcoe.recipeapp.repository.api.RecipeResponse
 import timber.log.Timber
 
 class RecipeStore {
@@ -14,20 +15,33 @@ class RecipeStore {
         else -> Maybe.empty()
     }
 
-    fun store(categoryListResponse: CategoryListResponse) {
+    fun storeCategoryRecipes(categoryListResponse: CategoryListResponse) {
         Timber.d("storing: $categoryListResponse")
         this.categoryListResponse = categoryListResponse
     }
 
-    private val cache = mutableMapOf<String, CategoryRecipesResponse>()
+    private val categoryRecipesCache = mutableMapOf<String, CategoryRecipesResponse>()
 
     fun getCategoryRecipes(category: String): Maybe<CategoryRecipesResponse> = when {
-        cache[category] != null -> Maybe.just(cache[category])
+        categoryRecipesCache[category] != null -> Maybe.just(categoryRecipesCache[category])
         else -> Maybe.empty()
     }
 
-    fun store(category: String, response: CategoryRecipesResponse) {
+    fun storeCategoryRecipes(category: String, response: CategoryRecipesResponse) {
         Timber.d("storing: $category -> $response")
-        cache[category] = response
+        categoryRecipesCache[category] = response
     }
+
+    private val recipeCache = mutableMapOf<String, RecipeResponse>()
+
+    fun getRecipe(id: String): Maybe<RecipeResponse> = when {
+        recipeCache[id] != null -> Maybe.just(recipeCache[id])
+        else -> Maybe.empty()
+    }
+
+    fun storeRecipe(id: String, response: RecipeResponse) {
+        Timber.d("storing: recipe: $id -> $response")
+        recipeCache[id] = response
+    }
+
 }
