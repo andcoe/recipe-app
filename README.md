@@ -12,6 +12,7 @@ The objective of this app is to build a sample app that can be used as a startup
 
 ### Testing features
 1. espresso tests for views
-2. scenario tests for common user journeys (navigation between different views)
+2. espresso scenario tests for common user journeys (navigation between different views)
 3. robots to reduce duplication of code and improve encapsulation of ui matchers and actions
-4. unit testing different components
+4. provide TestModule to run espresso tests and not the real AppModule
+5. unit testing different components
