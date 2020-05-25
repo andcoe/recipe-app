@@ -3,6 +3,8 @@ package org.andcoe.recipeapp.recipe.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -11,6 +13,8 @@ import org.andcoe.recipeapp.R
 import org.andcoe.recipeapp.categoryrecipes.model.CategoryRecipeItem
 import org.andcoe.recipeapp.core.appModule
 import org.andcoe.recipeapp.recipe.model.Recipe
+import timber.log.Timber
+
 
 class RecipeActivity : AppCompatActivity() {
 
@@ -46,6 +50,14 @@ class RecipeActivity : AppCompatActivity() {
 
     private fun setRecipeDetail(recipe: Recipe) {
         recipeInstructions.text = recipe.instructions
+
+        recipe.ingredients.forEach {
+            Timber.d("Recipe ing: $it")
+
+            val ingredientView = IngredientView(this, null)
+            ingredientView.setIngredient(it)
+            ingredientsContainer.addView(ingredientView)
+        }
     }
 
     private fun recipeId(): String = intent.getStringExtra(recipeIdKey)!! // TODO: show error
