@@ -15,4 +15,5 @@ The objective of this app is to build a sample app that can be used as a startup
 2. espresso scenario tests for common user journeys (navigation between different views)
 3. robots to reduce duplication of code and improve encapsulation of ui matchers and actions
 4. provide TestModule to run espresso tests and not the real AppModule
-5. unit testing different components
+5. screenshot tests (needs api 26 emulator and pillow installed)
+6. unit testing different components

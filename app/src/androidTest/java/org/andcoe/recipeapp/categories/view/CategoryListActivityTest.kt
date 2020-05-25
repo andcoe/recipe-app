@@ -19,6 +19,7 @@ class CategoryListActivityTest {
     fun launchesCategoryList() {
         categoryListRobot.checkTitleIsDisplayed()
         categoryListRobot.checkListIsDisplayed()
+        categoryListRobot.takeScreenshot(activityRule.activity)
     }
 
     @Test

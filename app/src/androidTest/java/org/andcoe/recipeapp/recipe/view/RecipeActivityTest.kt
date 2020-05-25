@@ -25,6 +25,7 @@ class RecipeActivityTest {
         recipeRobot.checkTitleIsDisplayed("Tomato and pesto spaghetti")
         recipeRobot.checkImageIsDisplayed()
         recipeRobot.checkInstructions("some cooking instructions")
+        recipeRobot.takeScreenshot(activityRule.activity)
     }
 
 }

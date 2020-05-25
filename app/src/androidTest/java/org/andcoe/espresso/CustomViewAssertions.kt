@@ -10,7 +10,8 @@ object CustomViewAssertions {
 
     fun checkTitleIsDisplayed(@StringRes titleResId: Int, param: String = "") {
         val resources = appContext().resources
-        val titleText = resources.getString(titleResId, if (param.isNotEmpty()) param else emptyArray<String>())
+        val titleText =
+            resources.getString(titleResId, if (param.isNotEmpty()) param else emptyArray<String>())
 
         onView(
             allOf(

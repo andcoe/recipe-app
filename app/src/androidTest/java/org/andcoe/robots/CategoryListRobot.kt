@@ -11,7 +11,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.andcoe.espresso.CustomViewAssertions
 import org.andcoe.recipeapp.R
 
-class CategoryListRobot {
+class CategoryListRobot : BaseRobot() {
 
     fun clickItemAtPosition(index: Int) {
         onView(withId(R.id.categoryList))

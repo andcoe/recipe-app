@@ -6,7 +6,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import org.andcoe.espresso.CustomViewAssertions
 import org.andcoe.recipeapp.R
 
-class RecipeRobot {
+class RecipeRobot : BaseRobot() {
 
     fun checkTitleIsDisplayed(recipeName: String) {
         CustomViewAssertions.checkTitleIsDisplayed(R.string.recipe_title, recipeName)

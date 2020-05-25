@@ -12,7 +12,7 @@ import org.andcoe.espresso.CustomViewAssertions
 import org.andcoe.recipeapp.R
 import org.andcoe.recipeapp.categoryrecipes.model.CategoryRecipeItem
 
-class CategoryRecipesRobot {
+class CategoryRecipesRobot : BaseRobot() {
 
     fun clickItemAtPosition(index: Int) {
         onView(withId(R.id.categoryRecipesList))
@@ -33,7 +33,14 @@ class CategoryRecipesRobot {
 
     fun checkListContains(categoryRecipeItem: CategoryRecipeItem) {
         onView(withId(R.id.categoryRecipesList))
-            .check(matches(recyclerHasAtPosition(0, hasDescendant(withText(categoryRecipeItem.name)))))
+            .check(
+                matches(
+                    recyclerHasAtPosition(
+                        0,
+                        hasDescendant(withText(categoryRecipeItem.name))
+                    )
+                )
+            )
     }
 
 }
